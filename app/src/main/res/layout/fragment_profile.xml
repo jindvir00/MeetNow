@@ -1,14 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey_500"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/profile_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="56dp"/>
+
+    <TextView
+        android:id="@+id/username_profile_tv"
+        android:gravity="start|center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:drawablePadding="12dp"
+        android:text="Jindvir Singh"
+        android:textColor="@color/black"
+        android:fontFamily="@font/aleo_bold"
+        android:layout_marginStart="24dp"
+        android:background="@color/white"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="24dp"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/baseline_person_24" />
+    <TextView
+        android:id="@+id/email_profile_tv"
+        android:gravity="start|center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:drawablePadding="12dp"
+        android:text="20bcs7800@cuchd.in"
+        android:textColor="@color/black"
+        android:fontFamily="@font/aleo_bold"
+        android:layout_marginStart="24dp"
+        android:background="@color/white"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/baseline_email_24" />
+    <TextView
+        android:id="@+id/phone_profile_tv"
+        android:gravity="start|center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:drawablePadding="12dp"
+        android:text="+91-9876783493"
+        android:textColor="@color/black"
+        android:fontFamily="@font/aleo_bold"
+        android:layout_marginStart="24dp"
+        android:background="@color/white"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/baseline_phone_24" />
+
+
+
+
+</LinearLayout>
