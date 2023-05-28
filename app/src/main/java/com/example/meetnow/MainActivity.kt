@@ -1,5 +1,6 @@
 package com.example.meetnow
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,20 +10,20 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.meetnow.databinding.ActivityMainBinding
-import com.example.meetnow.ui.main.SectionsPagerAdapter
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private val sharedPrefFile = "userSignedDetail"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        binding.authenticate.setOnClickListener {
-//            startActivity(Intent(this@MainActivity , AuthenticationActivity::class.java))
-//            finish()
-//        }
 
+
+
+        binding.itemBottomNav.selectedItemId = R.id.home
         loadFragment(HomeFragment())
         binding.settingsImg.setOnClickListener {
             loadFragment(SettingsFragment())
@@ -31,19 +32,21 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.home -> {
                     loadFragment(HomeFragment())
+//                    binding.itemBottomNav.selectedItemId = R.id.home
                     return@setOnItemSelectedListener true
                 }
                 R.id.profile -> {
                     loadFragment(ProfileFragment())
+//                    binding.itemBottomNav.selectedItemId = R.id.home
                     return@setOnItemSelectedListener true
                 }
                 R.id.notifications -> {
-                    loadFragment(VideoOptionsFragment())
+                    loadFragment(ProfileFragment())
                     return@setOnItemSelectedListener true
                 }
 
                 else -> {
-                    return@setOnItemSelectedListener false
+                    return@setOnItemSelectedListener true
                 }
             }
         }
@@ -51,10 +54,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadFragment(fragment: Fragment){
         val transaction = supportFragmentManager.beginTransaction()
+
         transaction.replace(R.id.ll_fragment_view ,fragment)
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+//        transaction.addToBackStack(null)
         transaction.commit()
 
-//        binding.itemBottomNav.selectedItemId = index
+       //        binding.itemBottomNav.selectedItemId = index
     }
+
 }

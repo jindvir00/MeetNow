@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MeetNow" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">@color/yellow_dark</item>
     </style>
 
     <style name="Theme.MeetNow" parent="Base.Theme.MeetNow" />
@@ -15,4 +15,8 @@
     <style name="Theme.MeetNow.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.MeetNow.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="Theme.MeetNow.NoActionBar">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

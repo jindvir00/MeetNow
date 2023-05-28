@@ -1,32 +1,29 @@
 package com.example.meetnow
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
+
+    private val sharedPrefFile = "userProfileDetails"
+
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -37,23 +34,46 @@ class ProfileFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val profileName = view.findViewById<TextView>(R.id.username_profile_tv)
+        val profileEmail = view.findViewById<TextView>(R.id.email_profile_tv)
+        val profilePhone = view.findViewById<TextView>(R.id.phone_profile_tv)
+        val profileDob = view.findViewById<TextView>(R.id.dob_profile_tv)
+        val logoutBtn = view.findViewById<Button>(R.id.logout_btn)
+        val sharedPreferencesUser = view.context.getSharedPreferences(sharedPrefFile , Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor =  sharedPreferencesUser.edit()
+
+        logoutBtn.setOnClickListener {
+
+            val intent = Intent(view.context.applicationContext , LoginActivity::class.java)
+            editor.putBoolean("signed",false)
+            editor.apply()
+            startActivity(intent)
+            activity?.finish()
+
+        }
+
+
+        val profileNameVal = sharedPreferencesUser.getString("name", "Error in Loading")
+        val profileEmailVal = sharedPreferencesUser.getString("email", "Error in Loading")
+        val profileDobVal = sharedPreferencesUser.getString("dob", "Error in Loading")
+        val profilePhoneVal = sharedPreferencesUser.getString("phone", "Error in Loading")
+
+
+
+
+        if( profileNameVal.equals("Error in Loading") && profileEmailVal.equals("Error in Loading") && profilePhoneVal.equals("Error in Loading")){
+            profileName.setText(profileNameVal.toString())
+            profileEmail.setText(profileEmailVal.toString())
+            profilePhone.setText(profilePhoneVal.toString())
+            profilePhone.setText(profileDobVal.toString())
+        }else{
+            profileName.setText(profileNameVal.toString())
+            profileEmail.setText(profileEmailVal.toString())
+            profilePhone.setText(profilePhoneVal.toString())
+            profileDob.setText(profileDobVal.toString())
+        }
     }
 }

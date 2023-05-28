@@ -12,10 +12,18 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome!"</string>
     <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_phoneNumber">Not a valid Phone Number</string>
+    <string name="invalid_email">Not a valid email</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="login">Login</string>
     <string name="name">Name</string>
     <string name="phone">Phone</string>
     <string name="signup">SignUp</string>
+    <string name="add_image">Add Image</string>
+    <string name="new_user_registration">New User Registration ?</string>
+    <string name="fp">Forgot Password ?</string>
+    <string name="check_details">Email or Password Invalid</string>
+    <string name="DOB">DOB</string>
+    <string name="change_name">Change Image</string>
 </resources>
